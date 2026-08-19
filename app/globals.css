@@ -1,0 +1,80 @@
+/* @flashmandu-template app/globals.css@0.4.0 */
+/**
+ * Global stylesheet for the Flashmandu Next.js app template.
+ *
+ * THE ONE RULE: this file overrides NOTHING the kit defines.
+ *
+ * `@flashmandu/app-bridge-ui` owns every `.fm-*` class and every `--fm-*`
+ * token. Because this file is imported AFTER the kit's stylesheet, any rule
+ * here with the same selector wins at equal specificity — silently, with no
+ * error, from the app's very first commit. That is exactly how the template
+ * used to ship: it redefined `.fm-container` at `max-width: 880px` with no
+ * page gutter and `.fm-card` at 20px padding, so a freshly scaffolded app
+ * rendered as a narrow centred reading column while the host it was framed in
+ * rendered full-bleed content in a 1280px main with 16/24px gutters. Every app
+ * scaffolded from the template inherited that mismatch.
+ *
+ * So: no `.fm-*` selector below this line, ever. A CLI test enforces it.
+ *
+ * `dist/index.css` is the ONE sanctioned kit CSS import — it bundles
+ * `fonts.css` + `tokens.css` + `components.css` in that order. Importing
+ * `tokens.css`/`components.css` directly is what silently drops the bundled
+ * Instrument Sans typeface (the font-face rules live in `fonts.css`); a
+ * `doctor` rule (`kit-css-single-entry`) fails on any other import shape.
+ *
+ * WHAT BELONGS HERE
+ *   - the document reset (margin, box-sizing, base colours off kit tokens)
+ *   - app-local classes, under the `app-` prefix so they can never collide
+ *
+ * WHAT DOES NOT
+ *   - restyling a kit class → use the kit's own modifier (`.fm-card--sm`,
+ *     `.fm-container--narrow`, `.fm-container--bleed`) or compose primitives
+ *   - a different look for a token → override the TOKEN (`--fm-radius`,
+ *     `--fm-font-sans`), which is the supported seam and themes cleanly
+ *   - a webfont → the kit self-hosts the platform typeface (Instrument Sans)
+ *     and points `--fm-font-sans` at it. Do not add a Google Fonts @import.
+ *   - a style the kit genuinely lacks → that is a kit gap. File it against
+ *     @flashmandu/app-bridge-ui instead of patching around it here; a local
+ *     patch drifts away from the host on the next kit release.
+ */
+@import "@flashmandu/app-bridge-ui/dist/index.css";
+@import "@flashmandu/app-bridge-ui/tokens.css";
+@import "@flashmandu/app-bridge-ui/components.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--fm-bg);
+  color: var(--fm-text);
+  font-family: var(--fm-font-sans);
+  font-size: var(--fm-text-base);
+  line-height: var(--fm-leading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code,
+pre {
+  font-family: var(--fm-font-mono);
+  font-size: 0.85em;
+}
+
+/**
+ * Storefront embed block shell (`app/embed/[type]`).
+ *
+ * A storefront block is NOT an admin page: it sits in a sandboxed iframe the
+ * merchant sized in the page builder, so it gets no `.fm-container` — no
+ * 1280px cap, no page gutter — just breathing room off the iframe edge.
+ */
+.app-embed-shell {
+  min-height: 100%;
+  padding: var(--fm-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--fm-space-3);
+}

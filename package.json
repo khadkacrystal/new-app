@@ -1,0 +1,32 @@
+{
+  "name": "autohisab-business-app-next-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AutoHisab Business app starter (Next.js + TypeScript) with OAuth + HMAC webhooks, host page chrome and IndexTable.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@flashmandu/app-bridge": "file:vendor/flashmandu-app-bridge-0.5.0.tgz",
+    "@flashmandu/app-bridge-ui": "file:vendor/flashmandu-app-bridge-ui-0.5.0.tgz",
+    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/client": "^7.9.1",
+    "dotenv": "^17.4.2",
+    "fs": "^0.0.1-security",
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "//bridge": "The bridge packages are a matched PAIR pinned to the same minor: app-bridge speaks protocol v2 (SET_PAGE, TOKEN_REFRESH) and app-bridge-ui renders the chrome that protocol implies. Bump them together — `autohisab-business dev` warns when either falls below the platform's supported floor.",
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^20.19.43",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "prisma": "^7.9.1",
+    "typescript": "^5.4.0"
+  }
+}
