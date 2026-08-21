@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ButtonLink,
   Card,
   Page,
   Section,
@@ -61,10 +62,10 @@ export default function DashboardPage() {
 
         <Card title="Tables" subtitle="IndexTable" accent="blue">
           <p className="fm-muted" style={{ margin: 0 }}>
-            The <Link href="/items">Items</Link> page shows the standard list
-            surface: sortable columns, selection with bulk actions, a pinned
-            first column, pagination in the shell footer, and skeleton rows
-            while data loads.
+            The <ButtonLink href="/items">Items</ButtonLink> page shows the
+            standard list surface: sortable columns, selection with bulk
+            actions, a pinned first column, pagination in the shell footer, and
+            skeleton rows while data loads.
           </p>
         </Card>
 

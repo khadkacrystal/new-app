@@ -22,6 +22,25 @@ capabilities = [ "identity", "resize" ]
   mode = "iframe"
   path = "/embed/hello"
 
+
+[[nav_items]]
+label = "Home"
+path = "/"
+icon = "home"
+order = 1
+
+[[nav_items]]
+label = "Items"
+path = "/items"
+icon = "map"
+order = 2
+
+[[nav_items]]
+label = "Task List"
+path = "/tasklists"
+icon = "tasks"
+order = 3
+
 # ── UI extensions ────────────────────────────────────────────────────────────
 # ONE table for every host surface. Each [[extensions]] block is one extension;
 # each [[extensions.targeting]] block under it is one place that extension

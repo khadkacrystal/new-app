@@ -418,6 +418,7 @@ export default function ItemsPage() {
             current={page}
             total={totalPages}
             onChange={handlePageChange}
+            siblingCount={6}
           />
         }
       />

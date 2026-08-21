@@ -7,17 +7,20 @@ datasource db {
   provider = "sqlite"
 }
 
-model User { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
-  name  String?
-  posts Post[]
-} 
-model Post { 
-  id        Int     @id @default(autoincrement()) 
-  title     String
-  content   String?
-  published Boolean @default(false) 
-  author    User    @relation(fields: [authorId], references: [id]) 
-  authorId  Int
-} 
+model Task {
+  id String @id @default(cuid())
+  title String
+  completed Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tasklist TaskList @relation(fields: [taskListId], references: [id])
+  taskListId String
+}
+
+model TaskList{
+  id String @id @default(cuid())
+  name String
+  tasks Task[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
